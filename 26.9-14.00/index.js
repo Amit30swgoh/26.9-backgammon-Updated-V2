@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const pieces = { yellow: [], white: [] };
 
     // Function to roll the dice
-    function rollDice() {
+    const rollDice = () => {
         const diceRoll1 = getRandomDiceRoll();
         const diceRoll2 = getRandomDiceRoll();
 
@@ -20,44 +20,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
         toggleTurn();
         alertTurn(turn, diceRoll1, diceRoll2);
-    }
+    };
 
     // Generate a random dice roll
-    function getRandomDiceRoll() {
-        return Math.floor(Math.random() * 6) + 1;
-    }
+    const getRandomDiceRoll = () => Math.floor(Math.random() * 6) + 1;
 
     // Display dice value
-    function displayDice(diceElement, rollValue) {
+    const displayDice = (diceElement, rollValue) => {
         diceElement.textContent = rollValue;
-    }
+    };
 
     // Switch turns between yellow and white
-    function toggleTurn() {
+    const toggleTurn = () => {
         turn = turn === 'yellow' ? 'white' : 'yellow';
-    }
+    };
 
     // Alert the current turn and dice rolls
-    function alertTurn(turn, diceRoll1, diceRoll2) {
+    const alertTurn = (turn, diceRoll1, diceRoll2) => {
         alert(`It's ${turn === 'yellow' ? 'Yellow' : 'White'}'s turn! Roll: ${diceRoll1}, ${diceRoll2}`);
-    }
+    };
 
     // Function to add pieces to the board
-    function addPiece(color, position) {
+    const addPiece = (color, position) => {
         const piece = document.createElement('div');
         piece.classList.add('piece');
         if (color === 'white') piece.classList.add('white-piece');
         board.children[position].appendChild(piece);
         pieces[color].push(piece);
-    }
+    };
 
     // Initialize the board with default pieces
-    function initializeBoard() {
+    const initializeBoard = () => {
         addPiece('yellow', 0);
         addPiece('yellow', 0);
         addPiece('white', 23);
         addPiece('white', 23);
-    }
+    };
 
     // Add event listener to the roll button
     rollBtn.addEventListener('click', rollDice);
