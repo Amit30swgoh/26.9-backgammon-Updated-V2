@@ -7,12 +7,12 @@ const sounds = {
     win: new Audio('assets/sounds/win.mp3'),
 
     // Play the sound corresponding to the given type
-    playSound: function (type) {
+    playSound(type) {
         const soundMap = {
-            'dice': this.diceRoll,
-            'move': this.pieceMove,
-            'invalid': this.invalidMove,
-            'win': this.win
+            dice: this.diceRoll,
+            move: this.pieceMove,
+            invalid: this.invalidMove,
+            win: this.win
         };
 
         // Play the appropriate sound if the type exists
