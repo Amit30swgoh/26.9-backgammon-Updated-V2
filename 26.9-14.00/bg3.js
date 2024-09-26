@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Animate dice rolls
     function animateDiceRolls() {
         const diceElements = [document.getElementById("dice1"), document.getElementById("dice2")];
-        diceElements.forEach(dice => {
+        diceElements.forEach((dice) => {
             dice.style.transform = "rotateX(360deg) rotateY(360deg)";
             setTimeout(() => {
                 dice.style.transform = "rotateX(0deg) rotateY(0deg)";
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Enable piece selection
     function enablePieceSelection() {
         const pieces = document.querySelectorAll(`.${currentPlayer}-piece`);
-        pieces.forEach(piece => {
+        pieces.forEach((piece) => {
             piece.style.cursor = "pointer";
             piece.addEventListener("click", () => {
                 if (!activePiece) {
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Highlight possible moves based on dice roll
     function highlightPossibleMoves(piece) {
         const currentPosition = getCurrentPosition(piece);
-        diceRolls.forEach(dice => {
+        diceRolls.forEach((dice) => {
             const newPosition = calculateNewPosition(currentPosition, dice);
             if (isValidPosition(newPosition)) {
                 const target = board.children[newPosition];
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Reset highlighted positions
     function resetHighlights() {
         const triangles = document.querySelectorAll(".triangle");
-        triangles.forEach(triangle => {
+        triangles.forEach((triangle) => {
             triangle.style.border = "none";
         });
     }
@@ -124,13 +124,15 @@ document.addEventListener("DOMContentLoaded", () => {
     // End turn and switch players
     function endTurn() {
         currentPlayer = currentPlayer === "yellow" ? "white" : "yellow";
-        alert(`${currentPlayer === "yellow" ? 'Yellow' : 'White'}'s Turn!`);
+        alert(`${currentPlayer === "yellow" ? "Yellow" : "White"}'s Turn!`);
         showPlayerTooltip();
     }
 
     // Show a tooltip for the current player
     function showPlayerTooltip() {
-        const tooltip = createTooltip(`${currentPlayer === "yellow" ? 'Yellow' : 'White'}'s Turn! Roll the dice to continue.`);
+        const tooltip = createTooltip(
+            `${currentPlayer === "yellow" ? "Yellow" : "White"}'s Turn! Roll the dice to continue.`
+        );
         document.body.appendChild(tooltip);
 
         setTimeout(() => {
@@ -155,34 +157,6 @@ document.addEventListener("DOMContentLoaded", () => {
         tooltip.textContent = message;
 
         return tooltip;
-    }
-
-    // Validate moves based on current rules
-    function isValidMove(piece, targetPosition) {
-        const currentPosition = getCurrentPosition(piece);
-        if (currentPlayer === "yellow" && currentPosition >= targetPosition) return false;
-        if (currentPlayer === "white" && currentPosition <= targetPosition) return false;
-        // Additional move validation logic can go here
-        return true;
-    }
-
-    // Check win condition
-    function checkWinCondition() {
-        const yellowPieces = document.querySelectorAll(".yellow-piece");
-        const whitePieces = document.querySelectorAll(".white-piece");
-
-        if (yellowPieces.length === 0) {
-            alert("Yellow wins!");
-            resetGame();
-        } else if (whitePieces.length === 0) {
-            alert("White wins!");
-            resetGame();
-        }
-    }
-
-    // Reset the game after a win
-    function resetGame() {
-        location.reload(); // Reload the page to reset the game
     }
 
     // Add event listener for rolling dice
