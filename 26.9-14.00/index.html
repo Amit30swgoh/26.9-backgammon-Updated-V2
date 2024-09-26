@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backgammon Game</title>
+    <!-- Link to external stylesheets for cleaner HTML -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Backgammon Board -->
+    <div id="backgammon-board">
+        <div id="left-bar"></div>
+        <div id="right-bar"></div>
+        <div id="board">
+            <!-- Dynamically generated triangles for the board -->
+            <!-- 24 positions on the board -->
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+        </div>
+
+        <!-- Roll Dice Button -->
+        <button id="roll-btn">Roll Dice</button>
+
+        <!-- Dice Display -->
+        <div id="dice-container">
+            <div class="dice" id="dice1">1</div>
+            <div class="dice" id="dice2">6</div>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="bg1.js"></script>
+    <script src="bg2.js"></script>
+    <script src="bg3.js"></script>
+    <script src="gameRules.js"></script>
+    <script src="sounds.js"></script>
+    <script src="settings.js"></script>
+    <script src="localStorage.js"></script>
+    <script src="index.js"></script>
+
+</body>
+</html>
