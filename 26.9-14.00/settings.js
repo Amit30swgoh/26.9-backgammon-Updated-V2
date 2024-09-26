@@ -6,20 +6,20 @@ const gameSettings = {
     playerNames: { yellow: "Player 1", white: "Player 2" },
 
     // Toggle sound on or off
-    toggleSound: function () {
+    toggleSound() {
         this.soundEnabled = !this.soundEnabled;
         this.showAlert(`Sound ${this.soundEnabled ? 'enabled' : 'disabled'}`);
     },
 
     // Set player names for yellow and white
-    setPlayerNames: function (yellowName, whiteName) {
+    setPlayerNames(yellowName, whiteName) {
         this.playerNames.yellow = yellowName;
         this.playerNames.white = whiteName;
         this.showAlert(`Player names updated: ${yellowName} (Yellow), ${whiteName} (White)`);
     },
 
     // Utility function to show alerts (can be extended)
-    showAlert: function (message) {
+    showAlert(message) {
         alert(message);
     }
 };
