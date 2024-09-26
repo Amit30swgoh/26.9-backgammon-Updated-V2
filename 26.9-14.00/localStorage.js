@@ -2,7 +2,7 @@
 
 const storage = {
     // Save the current game state to localStorage
-    saveGameState: function () {
+    saveGameState: function (currentPlayer, diceRolls) {
         const gameState = {
             pieces: this.getPiecesState(),
             currentPlayer: currentPlayer,
@@ -18,16 +18,17 @@ const storage = {
         if (savedState) {
             const { pieces, currentPlayer: savedPlayer, diceRolls: savedDiceRolls } = JSON.parse(savedState);
             this.restorePieces(pieces);
-            currentPlayer = savedPlayer;
-            diceRolls = savedDiceRolls;
             this.showAlert('Game state loaded!');
+            return { currentPlayer: savedPlayer, diceRolls: savedDiceRolls };
         } else {
             this.showAlert('No saved game state found.');
+            return null;
         }
     },
 
     // Get the current state of the pieces on the board
     getPiecesState: function () {
+        const board = document.getElementById('board');
         return Array.from(document.querySelectorAll('.piece')).map(piece => {
             const position = Array.from(board.children).indexOf(piece.parentElement);
             return {
@@ -39,6 +40,7 @@ const storage = {
 
     // Restore pieces to their saved positions
     restorePieces: function (pieces) {
+        const board = document.getElementById('board');
         pieces.forEach(pieceData => {
             const piece = document.createElement('div');
             piece.classList.add('piece', `${pieceData.color}-piece`);
