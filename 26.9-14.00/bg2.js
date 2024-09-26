@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function animateDiceRolls() {
         const diceElements = [document.getElementById("dice1"), document.getElementById("dice2")];
 
-        diceElements.forEach(dice => {
+        diceElements.forEach((dice) => {
             dice.style.transform = "rotateX(360deg) rotateY(360deg)";
             setTimeout(() => {
                 dice.style.transform = "rotateX(0deg) rotateY(0deg)";
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Display a tooltip guiding the player
     function showPlayerTooltip() {
         const tooltip = createTooltip(
-            `${currentPlayer === "yellow" ? 'Yellow' : 'White'}'s Turn! Roll the dice to continue.`,
+            `${currentPlayer === "yellow" ? "Yellow" : "White"}'s Turn! Roll the dice to continue.`,
             currentPlayer === "yellow" ? "#ffcc00" : "#ffffff",
             currentPlayer === "yellow" ? "#333" : "#000"
         );
@@ -116,19 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Toggle active player
     function togglePlayer() {
         currentPlayer = currentPlayer === "yellow" ? "white" : "yellow";
-    }
-
-    // Show valid moves for the current player
-    function highlightValidMoves() {
-        const allTriangles = Array.from(board.children);
-        allTriangles.forEach(triangle => {
-            if (Math.random() < 0.2) {
-                triangle.style.backgroundColor = "rgba(0, 255, 0, 0.3)";
-                setTimeout(() => {
-                    triangle.style.backgroundColor = "";
-                }, 1000);
-            }
-        });
     }
 
     // Display tooltips for invalid moves
