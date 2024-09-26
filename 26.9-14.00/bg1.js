@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Pieces Animation - Interactive hover effects
     function animatePieces() {
         const pieces = document.querySelectorAll(".piece");
-        pieces.forEach(piece => {
+        pieces.forEach((piece) => {
             piece.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
             piece.addEventListener("mouseenter", () => {
                 piece.style.transform = "scale(1.1)";
